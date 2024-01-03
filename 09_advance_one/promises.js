@@ -77,10 +77,10 @@ consumePromiseFive()
 
 // async function getAlluser(){
 //     try{
-//         const response = await fetch("url")
+//         const response = await fetch("https://api.github.com/users/Krishna01Work")
 //         // console.log(response)
 //     const data = await response.json()
-//     console.log(data);
+//     console.log(data.name);
 //     }catch(error){
 //         console.log("E: ",error);
 //     }
@@ -88,3 +88,13 @@ consumePromiseFive()
 
 // getAlluser()
 
+// *************************************************
+
+fetch("https://api.github.com/users/Krishna01Work")
+.then((response)=>{
+    return response.json()
+})
+.then((data)=>{
+    console.log(data);
+})
+.catch((error) => console.log(error))

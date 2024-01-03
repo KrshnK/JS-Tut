@@ -6,18 +6,28 @@
     <title>Api Request</title>
 </head>
 <body style="background-color: #212121; color: #ffffff;">
-      
+    0	UNSENT	Client has been created. open() not called yet. <br> <hr>
+    1	OPENED	open() has been called. <br> <hr>
+    2	HEADERS_RECEIVED	send() has been called, and headers and status are available. <br> <hr>
+    3	LOADING	Downloading; responseText holds partial data. <br> <hr>
+    4	DONE	The operation is complete. <br> <hr>
 </body>
 <script>
     const requestUrl = 'https://api.github.com/users/Krishna01Work'
     const xhr = new XMLHttpRequest()
     xhr.open('GET',requestUrl)
-    xhr.onreadystatechange = ()=>{
+    console.log(xhr.readyState)
+    xhr.onreadystatechange = () => {
         console.log(xhr.readyState);
         if(xhr.readyState === 4){
-            const data = JSON.parse(this.responseText)
+            // console.log(xhr.responseText)
+            const data = JSON.parse(xhr.responseText)
             // console.log( typeof data);
-            console.log(data.follower);
+            console.log(data.name);
+            console.log(data.login);
+            console.log(data.id);
+            console.log(data.followers);
+            console.log(data.following);
         }
     }
     xhr.send();
